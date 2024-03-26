@@ -17,7 +17,8 @@
             <INPUT TYPE="TEXT" NAME="user" ><BR>
             password:
             <INPUT TYPE="TEXT" NAME="lastName" ><P>
-                <INPUT TYPE="SUBMIT"> <!-- Press this button to submit form -->
+                <INPUT TYPE="SUBMIT" value="login">
+                <input type="button" value="register"><!-- Press this button to submit form -->
         </FORM>
     </body>
 </html>
