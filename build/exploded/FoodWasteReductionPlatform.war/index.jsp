@@ -13,12 +13,10 @@
     </head>
     <body>
         <FORM ACTION="LoginServlet" METHOD="POST">
-            username:
-            <INPUT TYPE="TEXT" NAME="user" ><BR>
-            password:
-            <INPUT TYPE="TEXT" NAME="lastName" ><P>
-                <INPUT TYPE="SUBMIT" value="login">
-                <input type="button" value="register"><!-- Press this button to submit form -->
+            <input type="text" required="required" placeholder="username" name="username"></input><BR>
+            <input type="password" required="required" placeholder="password" name="password"></input><BR> 
+        <button class="but" type="submit">Sign in</button> 
+                <a href="views/register.jsp"><button type="button"> register </button></a>
         </FORM>
     </body>
 </html>

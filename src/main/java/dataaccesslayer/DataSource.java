@@ -14,9 +14,9 @@ import java.sql.SQLException;
  */
 public class DataSource {
     private Connection connection = null;
-    private String url = "jdbc:mysql://localhost:3306/books?useSSL=false&allowPublicKeyRetrieval=true";
+    private String url = "jdbc:mysql://localhost:3306/FWRP";
     private String username = "CST8288";
-    private String password = "CST8288";
+    private String password = "qwer1234";
 
     public DataSource() {
     }
