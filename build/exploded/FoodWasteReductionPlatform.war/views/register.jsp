@@ -13,6 +13,7 @@
     </head>
     <body>
         <FORM ACTION="RegisterServlet" METHOD="POST">
+            <input type="text" required="required" placeholder="username" name="username"></input><BR>
             <input type="text" required="required" placeholder="name" name="name"></input><BR>
             <input type="text" required="required" placeholder="xx@123.com" name="email"></input><BR>
             <input type="password" required="required" placeholder="password" name="password"></input><BR>

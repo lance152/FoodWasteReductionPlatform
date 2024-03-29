@@ -33,16 +33,13 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserLoginLogic userLoginLogic = new UserLoginLogic();
+        String username = request.getParameter("username");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         int userType = Integer.parseInt(request.getParameter("usertype"));
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setUserType(userType);
-        userLoginLogic.registerUser(user);
+        
+        userLoginLogic.userRegister(username, name, email, password, userType);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

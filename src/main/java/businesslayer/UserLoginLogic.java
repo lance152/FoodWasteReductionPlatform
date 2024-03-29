@@ -17,8 +17,14 @@ public class UserLoginLogic {
     public UserLoginLogic() {
         UsersDao = new UsersDaoImpl();
     }
-
-    public void registerUser(User user) {
+    
+    public void userRegister(String username, String name, String email, String password, int usertype) {
+        User user = new User();
+        user.setUsername(username);
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setUserType(usertype);
         UsersDao.addUser(user);
     }
 }

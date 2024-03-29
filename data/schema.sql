@@ -11,11 +11,12 @@ CREATE DATABASE FWRP;
 USE FWRP;
 
 CREATE TABLE User (
-    uid int NOT NULL AUTO_INCREMENT PRIMARY KEY，
+    uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username varchar(100) NOT NULL,
     name varchar(100) NOT NULL,
     email varchar(100) NOT NULL,
     password varchar(100) NOT NULL,
-    userType int NOT NULL,
+    userType int NOT NULL
 );
 
 

@@ -10,6 +10,7 @@ package model;
  */
 public class User {
     private int uid;
+    private String username;
     private String name;
     private String email;
     private String password;
@@ -21,6 +22,14 @@ public class User {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
