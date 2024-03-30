@@ -27,4 +27,9 @@ public class UserLoginLogic {
         user.setUserType(usertype);
         UsersDao.addUser(user);
     }
+    
+    public User userLogin(String username, String password) {
+        User user = UsersDao.getUserByUsername(username);
+        return user;
+    }
 }

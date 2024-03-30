@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
             out.println("<title>Servlet RegisterServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>register successful </h1>");
             out.println("</body>");
             out.println("</html>");
         }

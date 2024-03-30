@@ -13,11 +13,15 @@
     </head>
     <body>
         <FORM ACTION="RegisterServlet" METHOD="POST">
-            <input type="text" required="required" placeholder="username" name="username"></input><BR>
-            <input type="text" required="required" placeholder="name" name="name"></input><BR>
-            <input type="text" required="required" placeholder="xx@123.com" name="email"></input><BR>
-            <input type="password" required="required" placeholder="password" name="password"></input><BR>
-            <input type="number" required="required" placeholder="0" name="usertype"></input><BR>
+            username:<input type="text" required="required" placeholder="username" name="username"></input><BR>
+            name:<input type="text" required="required" placeholder="name" name="name"></input><BR>
+            email:<input type="text" required="required" placeholder="xx@123.com" name="email"></input><BR>
+            password:<input type="password" required="required" placeholder="password" name="password"></input><BR>
+            usertype:<select name="usertype">
+                <option value="1">retailer</option>
+                <option value="2">charity</option>
+                <option value="3">customer</option>
+            </select><BR>
         <button class="but" type="submit">Register</button> 
         </FORM>
     </body>

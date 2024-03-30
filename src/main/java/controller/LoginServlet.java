@@ -4,6 +4,7 @@
  */
 package controller;
 
+import businesslayer.UserLoginLogic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.User;
 
 /**
  *
@@ -31,8 +33,10 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        UserLoginLogic userLoginLogic = new UserLoginLogic();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        User user = userLoginLogic.userLogin(username, password);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -41,9 +45,11 @@ public class LoginServlet extends HttpServlet {
             out.println("<title>Servlet LoginServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet LoginServlet at " + username + "</h1>");
-            out.println("<h1>Servlet LoginServlet at " + password + "</h1>");            
+            if(user != null) {
+                out.println("<h1>Welcome " + user.getName() + "</h1>");        
+            } else {
+                out.println("<h1> No user found!</h1>");
+            }
             out.println("</body>");
             out.println("</html>");
         }
