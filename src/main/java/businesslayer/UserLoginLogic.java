@@ -6,6 +6,7 @@ package businesslayer;
 
 import dataaccesslayer.UsersDaoImpl;
 import model.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -19,17 +20,22 @@ public class UserLoginLogic {
     }
     
     public void userRegister(String username, String name, String email, String password, int usertype) {
+        String hashed_pwd = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = new User();
         user.setUsername(username);
         user.setName(name);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(hashed_pwd);
         user.setUserType(usertype);
         UsersDao.addUser(user);
     }
     
     public User userLogin(String username, String password) {
         User user = UsersDao.getUserByUsername(username);
-        return user;
+        if (BCrypt.checkpw(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
 }

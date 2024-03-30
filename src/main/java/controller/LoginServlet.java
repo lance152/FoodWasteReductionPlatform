@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
             if(user != null) {
                 out.println("<h1>Welcome " + user.getName() + "</h1>");        
             } else {
-                out.println("<h1> No user found!</h1>");
+                out.println("<h1> username/password incorrect!</h1>");
             }
             out.println("</body>");
             out.println("</html>");
