@@ -32,6 +32,9 @@ public class UserLoginLogic {
     
     public User userLogin(String username, String password) {
         User user = UsersDao.getUserByUsername(username);
+        if(user == null) {
+            return null;
+        }
         if (BCrypt.checkpw(password, user.getPassword())) {
             return user;
         } else {

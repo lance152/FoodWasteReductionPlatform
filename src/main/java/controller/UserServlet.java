@@ -51,10 +51,13 @@ public class UserServlet extends HttpServlet {
         switch (user.getUserType()) {
             case 1:
                 dispatcher = request.getRequestDispatcher("views/retailer.jsp");
+                break;
             case 2:
                 dispatcher = request.getRequestDispatcher("views/charity.jsp");
+                break;
             case 3:
                 dispatcher = request.getRequestDispatcher("views/customer.jsp");
+                break;
             default:
                 break;
         }
