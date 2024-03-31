@@ -12,6 +12,12 @@
         <title>Food Manage System</title>
     </head>
     <body>
+        <span><% String msg = (String) request.getAttribute("login_msg");
+            if (msg == null) {
+                msg = "please enter username and password";
+            }%>
+            <%= msg%>
+        </span>
         <FORM ACTION="LoginServlet" METHOD="POST">
             <input type="text" required="required" placeholder="username" name="username"></input><BR>
             <input type="password" required="required" placeholder="password" name="password"></input><BR> 

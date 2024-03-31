@@ -19,4 +19,21 @@ CREATE TABLE User (
     userType int NOT NULL
 );
 
+CREATE TABLE Inventory (
+    uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name varchar(100) NOT NULL,
+    location varchar(100) NOT NULL,
+    owner varchar(100) NOT NULL,
+    quantity int NOT NULL,
+    price int NOT NULL
+);
+
+CREATE TABLE SurplusFood (
+    uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name varchar(100) NOT NULL,
+    location varchar(100) NOT NULL,
+    owner varchar(100) NOT NULL,
+    quantity int NOT NULL,
+    price int NOT NULL
+);
 

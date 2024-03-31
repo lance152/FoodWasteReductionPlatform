@@ -4,23 +4,26 @@
  */
 package controller;
 
-import businesslayer.UserLoginLogic;
+import businesslayer.RetailerLogic;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Food;
 import model.User;
 
 /**
  *
- * @author lfrz
+ * @author lfrz1
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "RetailerServlet", urlPatterns = {"/RetailerServlet"})
+public class RetailerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,22 +38,16 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        UserLoginLogic userLoginLogic = new UserLoginLogic();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user = userLoginLogic.userLogin(username, password);
-        if(user == null) {
-            request.setAttribute("login_msg", "username/password incorrect!");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
-        session.setAttribute("user", user);
-        switch (user.getUserType()) {
-            case 1:
-                response.sendRedirect(request.getContextPath() + "/RetailerServlet");
-            default:
-                break;
-        }
-        
+        User user = (User) session.getAttribute("user");
+        RetailerLogic retailerLogic = new RetailerLogic();
+        List<Food> foods = null;
+
+        foods = retailerLogic.getFoodInventoryByOwner(user.getName());
+
+        request.setAttribute("items", foods);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/retailer.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,7 +62,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -79,7 +76,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
