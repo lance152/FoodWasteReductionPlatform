@@ -44,13 +44,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         session.setAttribute("user", user);
-        switch (user.getUserType()) {
-            case 1:
-                response.sendRedirect(request.getContextPath() + "/RetailerServlet");
-            default:
-                break;
-        }
-        
+        response.sendRedirect(request.getContextPath() + "/UserServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

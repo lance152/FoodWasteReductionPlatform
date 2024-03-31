@@ -5,6 +5,7 @@
 package businesslayer;
 
 import dataaccesslayer.InventoryDaoImpl;
+import dataaccesslayer.SurplusFoodDaoImpl;
 import java.util.List;
 import model.Food;
 
@@ -14,12 +15,18 @@ import model.Food;
  */
 public class RetailerLogic {
     private InventoryDaoImpl inventoryDAO = null;
+    private SurplusFoodDaoImpl surplusFoodDAO = null;
     
     public RetailerLogic() {
         inventoryDAO = new InventoryDaoImpl();
+        surplusFoodDAO = new SurplusFoodDaoImpl();
     }
     
     public List<Food> getFoodInventoryByOwner(String owner) {
         return inventoryDAO.getFoodsByOwner(owner);
+    }
+    
+    public List<Food> getAllSurplusFood() {
+        return surplusFoodDAO.getAllSurplusFood();
     }
 }

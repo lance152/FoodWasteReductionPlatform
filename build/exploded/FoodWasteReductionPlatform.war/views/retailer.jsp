@@ -26,8 +26,34 @@
                 </tr>
             </thead>
             <tbody>
-                <% List<Food> items = (List<Food>) request.getAttribute("items");
-                for (Food food : items) {%>
+                <% List<Food> foodsInventory = (List<Food>) request.getAttribute("foodsInventory");
+                for (Food food : foodsInventory) {%>
+                <tr>
+                    <td><%= food.getUid()%></td>
+                    <td><%= food.getName()%></td>
+                    <td><%= food.getLocation()%></td>
+                    <td><%= food.getQuantity() %></td>
+                    <td><%= food.getPrice() %></td>
+                </tr>
+                <% }%>
+            </tbody>
+        </table>
+            
+        <h2>Surplus Food</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>quantity</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% List<Food> surplusFoods = (List<Food>) request.getAttribute("surplusFoods");
+                for (Food food : surplusFoods) {%>
                 <tr>
                     <td><%= food.getUid()%></td>
                     <td><%= food.getName()%></td>

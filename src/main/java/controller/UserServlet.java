@@ -22,8 +22,8 @@ import model.User;
  *
  * @author lfrz1
  */
-@WebServlet(name = "RetailerServlet", urlPatterns = {"/RetailerServlet"})
-public class RetailerServlet extends HttpServlet {
+@WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
+public class UserServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,13 +40,24 @@ public class RetailerServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         RetailerLogic retailerLogic = new RetailerLogic();
-        List<Food> foods = null;
-
-        foods = retailerLogic.getFoodInventoryByOwner(user.getName());
-
-        request.setAttribute("items", foods);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/retailer.jsp");
+        List<Food> foodsInventory = null;
+        foodsInventory = retailerLogic.getFoodInventoryByOwner(user.getName());
+        request.setAttribute("foodsInventory", foodsInventory);
+        
+        List<Food> surplusFoods = null;
+        surplusFoods = retailerLogic.getAllSurplusFood();
+        request.setAttribute("surplusFoods", surplusFoods);
+        RequestDispatcher dispatcher = null;
+        switch (user.getUserType()) {
+            case 1:
+                dispatcher = request.getRequestDispatcher("views/retailer.jsp");
+            case 2:
+                dispatcher = request.getRequestDispatcher("views/charity.jsp");
+            case 3:
+                dispatcher = request.getRequestDispatcher("views/customer.jsp");
+            default:
+                break;
+        }
         dispatcher.forward(request, response);
     }
 
