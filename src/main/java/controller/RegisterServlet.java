@@ -40,19 +40,8 @@ public class RegisterServlet extends HttpServlet {
         int userType = Integer.parseInt(request.getParameter("usertype"));
         
         userLoginLogic.userRegister(username, name, email, password, userType);
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>register successful </h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        request.setAttribute("login_msg", "register successful! Please login");
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
